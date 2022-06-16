@@ -57,6 +57,10 @@ resource "aws_launch_template" "webserver" {
     name = aws_iam_instance_profile.websvr_profile.name
   }
 
+  tags = {
+    Owner = var.owner
+  }
+
   tag_specifications {
     resource_type = "instance"
 
@@ -82,6 +86,12 @@ resource "aws_autoscaling_group" "webserver" {
     id      = aws_launch_template.webserver.id
     version = aws_launch_template.webserver.latest_version
   }
+
+  tag {
+    key                 = "Owner"
+    value               = var.owner
+    propagate_at_launch = true
+  }
 }
 
 
@@ -90,6 +100,10 @@ resource "aws_route53_zone" "example" {
 
   vpc {
     vpc_id = var.vpc.vpc_id
+  }
+
+  tags = {
+    Owner = var.owner
   }
 }
 
@@ -107,6 +121,10 @@ resource "aws_acmpca_certificate_authority" "example" {
     subject {
       common_name = "${var.namespace}.local"
     }
+  }
+
+  tags = {
+    Owner = var.owner
   }
 }
 
@@ -186,6 +204,10 @@ module "alb" {
       target_type      = "instance"
     }
   ]
+
+  tags = {
+    Owner = var.owner
+  }
 }
 
 # DNS record for ALB

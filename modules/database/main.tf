@@ -21,4 +21,8 @@ resource "aws_db_instance" "database" {
 
   multi_az               = true
   skip_final_snapshot    = true
+
+  tags = {
+    Owner = var.owner
+  }
 }
