@@ -11,7 +11,7 @@ Assumptions:
 
 ## Architecture
 
-VPC with the following subnets:
+VPC with the following subnets (in each AZ):
 
 - database (accessible only from the webapp servers in the private subnets)
 - private (for the webapp)
