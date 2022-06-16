@@ -1,0 +1,17 @@
+#cloud-config
+
+#write_files:
+#  - path: /var/lib/tomcat8/conf/server.xml
+#    owner: root:root
+#    permissions: "0644"
+#    content: |
+#      {
+#        foo = bar
+#      }
+
+runcmd:
+  - sudo apt install default-jre
+  - sudo apt install tomcat8
+
+packages:
+  - fastjar
