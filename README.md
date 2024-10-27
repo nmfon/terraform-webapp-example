@@ -1,6 +1,6 @@
 # Terraform example - internal webapp in AWS
 
-This repo contains a Terraform module to deploy an AWS environment to
+This repo contains a Terraform project to deploy an AWS environment to
 host a production web application for *internal* teams, with a database
 backend.
 
